@@ -1,0 +1,27 @@
+<div class="todo-container">
+    <h1>To-Do List</h1>
+    <form [formGroup]="toDoForm" (ngSubmit)="addTodo()">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <input placeholder="Add a new task" formControlName="taskName" class="form-control" />
+        </div>
+        <div class="col-sm-5 form-group">
+          <input placeholder="Task description" formControlName="taskDescription" class="form-control" />
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </form>
+  
+    <ul>
+      <li *ngFor="let todo of todos; let i = index">
+        <label>
+          <input type="checkbox" [(ngModel)]="todo.completed" />
+          <span [class.completed]="todo.completed">{{ todo.title }}: {{ todo.description }}</span>
+        </label>
+        <button class="btn btn-danger" (click)="removeTodo(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
